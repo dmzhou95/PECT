@@ -1,0 +1,7 @@
+
+data:
+  format: visium
+  species: mouse
+  n_clusters: 52
+  label_sep: "\t"
+  label_header: true

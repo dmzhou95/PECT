@@ -1,0 +1,8 @@
+
+data:
+  format: visium
+  species: human
+  n_clusters: 20
+  label_sep: "\t"
+  label_header: true
+  label_col: ground_truth     # e.g. metadata.tsv with a "ground_truth" column

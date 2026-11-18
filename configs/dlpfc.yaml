@@ -1,0 +1,7 @@
+
+data:
+  format: visium
+  species: human
+  n_clusters: 7
+  label_sep: "\t"
+  label_header: false         # <section>_truth.txt: "barcode<TAB>label", no header

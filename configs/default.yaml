@@ -1,0 +1,48 @@
+
+data:
+  format: visium
+  count_file: filtered_feature_bc_matrix.h5
+  species: human
+  min_spots: 3
+  n_hvg: 3000
+  max_genes_per_spot: 64      # M
+  n_pca: 50
+  k_spatial: 6                # k_s
+  radius_um: 150.0            # rho
+  k_feature: 15               # k_f
+  omega: 0.5
+backbone:
+  model_name: InstaDeepAI/nucleotide-transformer-500m-human-ref
+  n_blocks: 24                # K_b
+  adapter_blocks: [21, 22, 23, 24]   # L = 4
+  seq_len_bp: 1000
+  preload_tokens_to_gpu: false
+model:
+  d_g: 64
+  gate_hidden: 64
+  d_a: 128
+  d_c: 128
+  n_heads: 4
+  rank: 30                    # r
+  lora_alpha: 0.6             # alpha  (s = alpha / r)
+  alpha_g: 0.2
+  dec_hidden: 256
+loss:
+  tau: 0.5
+  eta1: 0.1
+  eta2: 0.1
+  lam: 0.5
+  gamma: 0.5
+train:
+  device: cuda
+  batch_size: 128
+  infer_batch_size: 512
+  max_epochs: 60
+  patience: 10
+  lr_graph: 0.001
+  lr_adapter: 0.0005
+  weight_decay: 0.0001
+  token_chunk: 4096
+  recompute_tokens: true
+  cluster_method: mclust
+  mclust_model: EEE
